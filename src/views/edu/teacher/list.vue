@@ -25,7 +25,7 @@
 
       <el-form-item>
         <el-date-picker
-          v-model="teacherQuery.end"
+          v-model="teacherQuery.finish"
           type="datetime"
           placeholder="选择截止时间"
           value-format="yyyy-MM-dd HH:mm:ss"
@@ -51,7 +51,9 @@
 
       <el-table-column prop="intro" label="资历" />
 
-      <el-table-column prop="gmtCreate" label="添加时间" width="160" />
+      <el-table-column prop="gmtCreate" label="创建时间" width="160" />
+
+      <el-table-column prop="gmtModified" label="更新时间" width="160" />
 
       <el-table-column prop="sort" label="排序" width="60" />
 
@@ -116,7 +118,7 @@ export default {
       this.getList();
     },
     removeDataById(id) {
-      this.$confirm("此操作将永久删除该文件, 是否继续?", "提示", {
+      this.$confirm("是否确定删除该讲师信息？", "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
@@ -127,7 +129,9 @@ export default {
           type: "success",
           message: "删除成功!"
         });
-        this.getList();
+        // this.$router.push({path:`/teacher/table`});
+        // this.getList();
+        location. reload() // 当修改或删除会重新加载
       });
     }
   }

@@ -92,9 +92,10 @@ export default {
     saveOrUpdate() {
       if (!this.teacher.id) {
         this.AddTeacher();
+      }else{
+        console.log(this.id);
+        this.update();
       }
-      console.log(this.id);
-      this.update();
     },
     // 增添教师
     AddTeacher() {
@@ -132,6 +133,7 @@ export default {
       this.imagecropperKey=this.imagecropperKey+1 // 解决bug
     },
     cropSuccess(data){
+      console.log("调这个？")
       this.imagecropperShow=false
       this.teacher.avatar=data.url
       this.imagecropperKey=this.imagecropperKey+1 // 解决bug
